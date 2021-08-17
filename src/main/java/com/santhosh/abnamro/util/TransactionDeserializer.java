@@ -9,13 +9,14 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.santhosh.abnamro.model.Transaction;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Deserializer class for Transaction object 
  *
  */
+@Slf4j
 public class TransactionDeserializer implements Deserializer<Transaction> {
-
-private static final Logger log = LoggerFactory.getLogger(TransactionDeserializer.class);
 
 	@Override
 	public Transaction deserialize(String topic, byte[] data) {

@@ -16,12 +16,15 @@ import org.springframework.web.server.ResponseStatusException;
 import com.santhosh.abnamro.domain.DailyReport;
 import com.santhosh.abnamro.service.ReportService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 
 /**
  * Controller class : Rest APIs for generating daily reports
  *
  */
+@Slf4j
 @RestController
 @RequestMapping("v1")
 public class TransactionController {
@@ -46,6 +49,7 @@ public class TransactionController {
 		
 		try {
 			List<DailyReport> dailyReport = reportService.generateReport(file);
+			log.info("The daily transaction report is : ", dailyReport);
 			return new ResponseEntity<>(dailyReport, HttpStatus.OK);
 		} catch (Exception e) {
 			throw new ResponseStatusException(

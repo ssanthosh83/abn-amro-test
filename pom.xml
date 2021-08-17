@@ -113,6 +113,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
 		</plugins>
+		<finalName>abn-amro-test</finalName>
 	</build>
 
 </project>

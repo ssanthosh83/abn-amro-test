@@ -19,16 +19,16 @@ import com.santhosh.abnamro.model.Transaction;
 import com.santhosh.abnamro.processor.FileInputProcessor;
 import com.santhosh.abnamro.util.Mapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 /**
  * This class reads the file and returns the Transaction List to be displayed in the UI
  *
  */
+@Slf4j
 @Service
 public class ReportServiceImpl implements ReportService {
-
-	
-	private static final Logger log = LoggerFactory.getLogger(ReportServiceImpl.class);
 	
 	@Autowired
 	private FileInputProcessor resInputProcessor;
@@ -47,9 +47,8 @@ public class ReportServiceImpl implements ReportService {
 	 *	@return List<DailyReport>
 	 */
 	@Override
-	public List<DailyReport> generateReport(MultipartFile file) {
+	public List<DailyReport> generateReport(MultipartFile file) throws Exception {
 
-		//List<Transaction> transactions = transactionRepository.findAll();
 		List<String> transactions = resInputProcessor.readInput(file);
 		
 		Map<ClientInfo, Map<ProductInfo, List<SubTransaction>>> clientMap = transactions.stream()
@@ -76,7 +75,7 @@ public class ReportServiceImpl implements ReportService {
 						dailyReports.add(dailyReportBuilder.build());
 					});
 			});
-		log.info(String.valueOf(dailyReports.size()));
+		log.info("DailyReports size : "+dailyReports.size());
 		return dailyReports;	
 	}
 	

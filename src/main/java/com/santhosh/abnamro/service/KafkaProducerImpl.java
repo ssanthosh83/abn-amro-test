@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.santhosh.abnamro.model.Transaction;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Kafka Producer class : Sends the message to the Topic
  *

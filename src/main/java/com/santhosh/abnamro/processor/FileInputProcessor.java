@@ -11,15 +11,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 /**
  * This class reads the Input file and returns the list of transactions
  *
  */
+@Slf4j
 @Component
 public class FileInputProcessor implements InputProcessor{
-
-private static final Logger log = LoggerFactory.getLogger(FileInputProcessor.class);
 	
 	/**
 	 * Reads the file and returns the list of transactions
@@ -36,7 +37,7 @@ private static final Logger log = LoggerFactory.getLogger(FileInputProcessor.cla
 				transactions.add(line);
 			}
 		} catch (IOException e) {
-			log.error("File not found!");
+			log.error("File "+file.getOriginalFilename()+"not available!");
 			e.printStackTrace();
 		} 
 		return transactions;

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.santhosh.abnamro.model.Transaction;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Serializer class for Transaction object 
  *
  */
+@Slf4j
 public class TransactionSerializer implements Serializer<Transaction>{
-
-private static final Logger log = LoggerFactory.getLogger(TransactionSerializer.class);
 	
 	@Override
 	public byte[] serialize(String topic, Transaction data) {

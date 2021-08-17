@@ -19,8 +19,6 @@ import com.santhosh.abnamro.model.Transaction;
  */
 @Component
 public class Mapper {
-
-	private static final Logger log = LoggerFactory.getLogger(Mapper.class);
 	
 	/**
 	 * This method gets the Input string, parses it, builds the Transaction object and returns it.
